@@ -32,7 +32,6 @@ The primary objective of this project was to analyze customer data to:
 ## Recommendations
 - Menu Optimization: Consider revising or removing unpopular menu items.
 - Marketing Strategies: Target marketing efforts towards promoting popular menu items.
-- Customer Engagement: Engage with top customers to offer personalized experiences.
 
 ## Conclusion
 The analysis of customer data provided valuable insights into the performance of the new menu items at the Taste of the World Café. By identifying popular and unpopular menu items and understanding customer preferences, informed decisions can be made to optimize the menu and marketing strategies.
