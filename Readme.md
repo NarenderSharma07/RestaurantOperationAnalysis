@@ -12,8 +12,8 @@ The primary objective of this project was to analyze customer data to:
 - Provide insights to inform decision-making related to menu optimization and marketing strategies.
 
 ## Tools Used
-- SQL for data extraction and manipulation.
-- Excel for data visualization and analysis.
+- SQL for data extraction and analysis.
+- Excel for data visualization.
 
 ## Methodology
 - Data Extraction: SQL queries were used to extract relevant data from the café's database.
