@@ -1,7 +1,7 @@
 # Taste of the World Café Menu Analysis
 
 ## Introduction
-The Taste of the World Café introduced a new menu at the beginning of the year. This project involves analyzing customer data to assess the performance of the new menu items and understand customer preferences.
+The Taste of the World Café introduced a new menu at the beginning of the year. This project involves analyzing customer data to assess the performance of the new menu items and understand customer preferences. The datatset include menu_item table and order_detail table.
 
 ## Objective
 The primary objective of this project was to analyze customer data to:
@@ -10,6 +10,7 @@ The primary objective of this project was to analyze customer data to:
 - Check were there certain times that had more or less orders.
 - Determine which cuisines should we focus on developing more menu items for based on the data.
 - Provide insights to inform decision-making related to menu optimization and marketing strategies.
+
 
 ## Tools Used
 - SQL for data extraction and analysis.
