@@ -1,0 +1,117 @@
+-- Total number of Distinct order
+SELECT 
+	COUNT(DISTINCT order_id)
+FROM order_details;
+
+-- Total number of category 
+SELECT 
+	COUNT(DISTINCT category) as num_cuisines 
+FROM menu_items;
+
+-- Total number of items in the menu
+SELECT 
+	COUNT(DISTINCT item_name) as num_dishes
+from menu_items ;
+
+-- Total number of items in each category
+SELECT 
+	category,
+	COUNT(DISTINCT item_name) as num_dishes
+from menu_items 
+GROUP BY category
+ORDER BY category ASC;
+
+-- Average dish price in each category
+SELECT 
+	category,
+	avg(price) as avg_price
+from menu_items
+GROUP BY category
+ORDER BY category;
+
+-- What were the least and most expensive items? What categories were they in?
+SELECT 
+	m.item_name as item_name,
+    m.category as category,
+    m.price as price
+from order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+ORDER BY 3 DESC
+LIMIT 1;
+
+SELECT 
+	m.item_name as item_name,
+    m.category as category,
+    m.price as price
+from order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+ORDER BY 3 ASC
+LIMIT 1;
+
+-- Top 2 popular item by each category
+with cte as (SELECT 
+	m.item_name as item_name,
+    m.category as category,
+    COUNT(*) as num_orders,
+    ROW_NUMBER() OVER (PARTITION BY m.category order by COUNT(*) DESC) as rn
+from order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+GROUP BY 1,2
+)
+SELECT 
+	item_name,
+    category,
+    num_orders
+FROM cte
+WHERE rn <= 2;
+
+-- Identify popular and unpopular cuisines:
+SELECT m.category, count(*) as num_order
+FROM order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
+-- Identify top 5 popular and unpopular menu items:
+SELECT m.item_name, count(*) as num_order
+FROM order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 5;
+
+SELECT m.item_name, count(*) as num_order
+FROM order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+GROUP BY 1
+ORDER BY 2 ASC
+LIMIT 5;
+
+-- Were there certain times that had more or less orders?
+SELECT 
+	CASE
+		WHEN o.order_time <= '12:00:00' then 'Morning'
+        	WHEN o.order_time > '12:00:00' AND o.order_time <= '16:00:00' then 'Afteroon'
+        	WHEN o.order_time > '16:00:00' AND o.order_time <= '20:00:00' then 'Evening'
+        	WHEN o.order_time <= '24:00:00' then 'Night'
+	END as time_period,
+	count(*) as num_orders
+FROM order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
+-- Which cusines generate more sales
+SELECT m.category, SUM(m.price) as num_order
+FROM order_details as o
+JOIN menu_items as m
+ON m.menu_item_id = o.item_id
+GROUP BY 1
+ORDER BY 2 DESC;
