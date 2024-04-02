@@ -5,7 +5,7 @@ FROM order_details;
 
 -- Total number of category 
 SELECT 
-	COUNT(DISTINCT category) as num_cuisines 
+	COUNT(DISTINCT category) as category 
 FROM menu_items;
 
 -- Total number of items in the menu
@@ -32,8 +32,8 @@ ORDER BY category;
 -- What were the least and most expensive items? What categories were they in?
 SELECT 
 	m.item_name as item_name,
-    m.category as category,
-    m.price as price
+    	m.category as category,
+    	m.price as price
 from order_details as o
 JOIN menu_items as m
 ON m.menu_item_id = o.item_id
@@ -42,8 +42,8 @@ LIMIT 1;
 
 SELECT 
 	m.item_name as item_name,
-    m.category as category,
-    m.price as price
+  	m.category as category,
+    	m.price as price
 from order_details as o
 JOIN menu_items as m
 ON m.menu_item_id = o.item_id
@@ -53,9 +53,9 @@ LIMIT 1;
 -- Top 2 popular item by each category
 with cte as (SELECT 
 	m.item_name as item_name,
-    m.category as category,
-    COUNT(*) as num_orders,
-    ROW_NUMBER() OVER (PARTITION BY m.category order by COUNT(*) DESC) as rn
+    	m.category as category,
+    	COUNT(*) as num_orders,
+    	ROW_NUMBER() OVER (PARTITION BY m.category order by COUNT(*) DESC) as rn
 from order_details as o
 JOIN menu_items as m
 ON m.menu_item_id = o.item_id
@@ -63,13 +63,15 @@ GROUP BY 1,2
 )
 SELECT 
 	item_name,
-    category,
-    num_orders
+    	category,
+    	num_orders
 FROM cte
 WHERE rn <= 2;
 
 -- Identify popular and unpopular cuisines:
-SELECT m.category, count(*) as num_order
+SELECT 
+	m.category, 
+	count(*) as num_order
 FROM order_details as o
 JOIN menu_items as m
 ON m.menu_item_id = o.item_id
@@ -77,7 +79,9 @@ GROUP BY 1
 ORDER BY 2 DESC;
 
 -- Identify top 5 popular and unpopular menu items:
-SELECT m.item_name, count(*) as num_order
+SELECT 
+	m.item_name, 
+	count(*) as num_order
 FROM order_details as o
 JOIN menu_items as m
 ON m.menu_item_id = o.item_id
@@ -85,7 +89,9 @@ GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 5;
 
-SELECT m.item_name, count(*) as num_order
+SELECT 
+	m.item_name,
+	count(*) as num_order
 FROM order_details as o
 JOIN menu_items as m
 ON m.menu_item_id = o.item_id
@@ -109,7 +115,9 @@ GROUP BY 1
 ORDER BY 2 DESC;
 
 -- Which cusines generate more sales
-SELECT m.category, SUM(m.price) as num_order
+SELECT 
+	m.category, 
+	SUM(m.price) as sales
 FROM order_details as o
 JOIN menu_items as m
 ON m.menu_item_id = o.item_id
