@@ -5,9 +5,10 @@ The Taste of the World Café introduced a new menu at the beginning of the year.
 
 ## Objective
 The primary objective of this project was to analyze customer data to:
-- Identify popular and unpopular menu items.
 - Identify popular and unpopular cuisines.
+- Identify popular and unpopular menu items.
 - Check were there certain times that had more or less orders.
+- Sales distribution by cuisines.
 - Determine which cuisines should we focus on developing more menu items for based on the data.
 - Provide insights to inform decision-making related to menu optimization and marketing strategies.
 
