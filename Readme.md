@@ -27,7 +27,7 @@ The primary objective of this project was to analyze customer data to:
 ## Results
 - Top 5 Popular Menu Items: "Hamburger", "Edamame", and "Korean Beef Bowl" were identified as popular items.
 - Top 5 Unpopular Menu Items: "Chicken Tacos", "Potstickers", and "Cheese Lasagna" were identified as least popular items.
-- Popular Cuisines: "Asia" is the most popular cuisines with the highest order count.
+- Popular Cuisines: "Asian" is the most popular cuisines with the highest order count.
 - Unpopular Cuisin: "American" is the least popular cuisines as it has the lowest order count.
 - Peak Hours: The restraunt recieves most order during afteroon period between 12:00 PM to 4:00 PM.
 
