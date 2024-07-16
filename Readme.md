@@ -16,7 +16,6 @@ The primary objective of this project was to analyze customer data to:
 - Excel for data visualization.
 
 ## Methodology
-- Data Cleaning: The extracted data was cleaned to ensure accuracy and reliability.
 - Analysis: SQL queries were used to derive insights on popular menu items, total sales, total orders and customer preferences.
 - Visualization: Excel was utilized to create visualizations such as charts and graphs.
 - Interpretation: Results were interpreted to identify key insights and actionable recommendations.
